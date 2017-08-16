@@ -27,6 +27,14 @@ class App extends Component {
     this.setState({ data: newData });
   };
 
+  handleGoClick = async () => {
+    for (let i = 0; i < 50; i += 1) {
+      setTimeout(() => {
+        this.handleSetClick();
+      }, i * 500);
+    }
+  };
+
   render() {
     const data = this.state.data;
     return (
@@ -34,6 +42,7 @@ class App extends Component {
         <Chart data={data} />
         <button onClick={this.handleResetClick}>reset</button>
         <button onClick={this.handleSetClick}>set</button>
+        <button onClick={this.handleGoClick}>Go!!</button>
       </div>
     );
   }
