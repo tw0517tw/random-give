@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import Chart from './Chart';
 import './App.css';
+
+const randomGive = data => {
+  const newData = data.map(v => v - 1);
+  for (let i = 0; i < 20; i += 1) {
+    newData[_.random(0, 19)] += 1;
+  }
+  return newData.sort((a, b) => a - b);
+};
 
 class App extends Component {
   state = {
@@ -14,7 +23,7 @@ class App extends Component {
 
   handleSetClick = () => {
     const { data } = this.state;
-    const newData = data.map(d => (Math.random() + 0.5) * d);
+    const newData = randomGive(data);
     this.setState({ data: newData });
   };
 

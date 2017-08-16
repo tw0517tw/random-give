@@ -24,7 +24,7 @@ class Chart extends Component {
     const y = d3.scaleLinear().range([800, 0]);
 
     x.domain(data.map(d => d.name));
-    y.domain([0, d3.max(data, d => d.value)]);
+    y.domain([0, 200]);
 
     const svg = d3.select(faux).select('svg');
     const rect = svg.select('g').selectAll('rect').data(data);
