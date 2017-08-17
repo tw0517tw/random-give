@@ -6,20 +6,20 @@ import './App.css';
 
 const randomGive = data => {
   const newData = data.map(v => v - 1);
-  for (let i = 0; i < 20; i += 1) {
-    newData[_.random(0, 19)] += 1;
+  for (let i = 0; i < 50; i += 1) {
+    newData[_.random(1, 50) - 1] += 1;
   }
   return newData.sort((a, b) => a - b);
 };
 
 class App extends Component {
   state = {
-    data: Array(20).fill(100),
+    data: Array(50).fill(100),
     round: 0,
   };
 
   handleResetClick = () => {
-    this.setState({ data: Array(20).fill(100), round: 0 });
+    this.setState({ data: Array(50).fill(100), round: 0 });
   };
 
   handleSetClick = () => {

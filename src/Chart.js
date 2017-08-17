@@ -8,7 +8,7 @@ class Chart extends Component {
     return (
       <div className="chart">
         {this.props.data.map((d, i) =>
-          <Bar key={i} height={d} width={800 / this.props.data.length - 10} />
+          <Bar key={i} height={d} width={800 / this.props.data.length - 5} />
         )}
       </div>
     );
