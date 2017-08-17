@@ -15,23 +15,24 @@ const randomGive = data => {
 class App extends Component {
   state = {
     data: Array(20).fill(100),
+    round: 0,
   };
 
   handleResetClick = () => {
-    this.setState({ data: Array(20).fill(100) });
+    this.setState({ data: Array(20).fill(100), round: 0 });
   };
 
   handleSetClick = () => {
-    const { data } = this.state;
+    const { data, round } = this.state;
     const newData = randomGive(data);
-    this.setState({ data: newData });
+    this.setState({ data: newData, round: round + 1 });
   };
 
   handleGoClick = async () => {
-    for (let i = 0; i < 50; i += 1) {
+    for (let i = 0; i < 500; i += 1) {
       setTimeout(() => {
         this.handleSetClick();
-      }, i * 500);
+      }, i * 50);
     }
   };
 
@@ -39,7 +40,12 @@ class App extends Component {
     const data = this.state.data;
     return (
       <div className="App">
-        <Chart data={data} />
+        <div className="chartContainer">
+          <Chart data={data} />
+        </div>
+        <div>
+          Round: {this.state.round}
+        </div>
         <button onClick={this.handleResetClick}>reset</button>
         <button onClick={this.handleSetClick}>set</button>
         <button onClick={this.handleGoClick}>Go!!</button>
